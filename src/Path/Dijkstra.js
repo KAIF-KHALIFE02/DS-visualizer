@@ -1,5 +1,5 @@
-export async function dijkstra(nodes,startNode,endNode,grid){
-  document.getElementById('captions').innerText = "Let's find path using Dijkstra's algorithm";
+export async function dijkstra(nodes,startNode,endNode,grid,nodesState,speed){
+  // document.getElementById('captions').innerText = "Let's find path using Dijkstra's algorithm";
   await pauseIt();
     startNode.distance = 0;
     let unvisitedNodes = getAllNodes(nodes)
@@ -15,10 +15,8 @@ export async function dijkstra(nodes,startNode,endNode,grid){
              console.log('i am at infity') 
              return ;
         }
-        // document.getElementById('captions').innerText = "Visiting the next closest node"
-        // await pauseIt1();
-        closestNode.isVisited = true;
-        await colorNeighbour(closestNode.row,closestNode.col,grid)
+       await colorNeighbour(closestNode,speed)
+        nodesState(nodes)
         if (closestNode === endNode){
             return;
         } 
@@ -26,9 +24,9 @@ export async function dijkstra(nodes,startNode,endNode,grid){
     }
 }
 
-function colorNeighbour(row,col,grid){
-    grid[0].childNodes[row].childNodes[col].style.backgroundColor = 'yellow';
-    return new Promise(resolve => setTimeout(resolve,1))
+function colorNeighbour(node,speed){
+    node.isVisited = true
+    return new Promise(resolve => setTimeout(resolve,speed))
 }
 
 function getAllNodes(nodes){
@@ -68,9 +66,6 @@ async function updateUnvisitedNeighbors(node, nodes) {
   function pauseIt() {
     return new Promise((resolve) => setTimeout(resolve, 100));
   }
-  // function pauseIt1() {
-  //   return new Promise((resolve) => setTimeout(resolve, 50));
-  // }
 
   export async function getNodesInShortestPathOrder(finishNode) {
     // document.getElementById('captions').innerText = "We have found the end node. Now let's create a shortest path!!!!"

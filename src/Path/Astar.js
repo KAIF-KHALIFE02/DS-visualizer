@@ -1,4 +1,4 @@
-export async function astar(nodes,startNode,endNode,grid){
+export async function astar(nodes,startNode,endNode,grid,nodesState,speed){
     let openSet = []
     let closedSet = []
     startNode.distance = 0;
@@ -12,16 +12,16 @@ export async function astar(nodes,startNode,endNode,grid){
         openSet = removeFromArray(currentNode,openSet);
         if (currentNode.isWall) continue
         currentNode.isVisited = true;
-        await colorNeighbour(currentNode.row,currentNode.col,grid)
+        await colorNeighbour(currentNode,speed)
+        nodesState(nodes)
         openSet =  updateNeighbours(currentNode,nodes,endNode,openSet,closedSet)
         closedSet.push(currentNode)
-        console.log(closedSet)
     }
 }
 
-function colorNeighbour(row,col,grid){
-    grid[0].childNodes[row].childNodes[col].style.backgroundColor = 'yellow';
-    return new Promise(resolve => setTimeout(resolve,1))
+function colorNeighbour(node,speed){
+    node.isVisited = true
+    return new Promise(resolve => setTimeout(resolve,speed))
 }
 
 function getClosestNode(openSet){
@@ -41,7 +41,6 @@ function removeFromArray(node,openSet){
     for(let i= openSet.length-1;i>=0;i--){
         if(openSet[i]===node) openSet.splice(i,1)
     }
-    // console.log(openSet)
     return openSet
 }
 

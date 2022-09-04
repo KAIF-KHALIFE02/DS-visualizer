@@ -1,8 +1,10 @@
 async function heapSort(array, element, setState, speed) {
+  if (speed >= 500) {
   document.getElementById("captions").innerText =
     "Lets's start sorting with Heap sort!!!";
   await pauseIt();
   document.getElementById("captions").innerText = "Sorting......"
+  }
   let HighestSpeed;
   if (speed === 1) {
     HighestSpeed = 1;
@@ -19,11 +21,13 @@ async function heapSort(array, element, setState, speed) {
     array[lastChild] = temp;
     setState(array);
     await maxHeapify(element, array, lastChild, 0, setState, 1, HighestSpeed);
-    element[lastChild].style.backgroundColor = "green";
+    element[lastChild].classList.add('sorted')
     if (speed >= 500) await success(array.length - lastChild);
     lastChild--;
   }
+  if (speed >= 500) {
   document.getElementById("captions").innerText = "The bars are now sorted!!!";
+  }
   return array;
 }
 
@@ -73,15 +77,14 @@ async function maxHeapify(element, array, n, i, setState, at, speed) {
     let temp = array[largest];
     array[largest] = array[i];
     array[i] = temp;
-    console.log("heap", array);
     setState(array);
     await maxHeapify(element, array, n, largest, setState, at, speed);
   }
 }
 
 function compare(bar1, bar2) {
-  bar1.style.backgroundColor = "red";
-  bar2.style.backgroundColor = "red";
+  bar1.classList.add('compare')
+  bar2.classList.add('compare')
   return new Promise((resolve) => setTimeout(resolve, 10));
 }
 
@@ -90,19 +93,22 @@ async function swap(bar1, bar2) {
   temp = bar1.style.height;
   bar1.style.height = bar2.style.height;
   bar2.style.height = temp;
-  bar1.style.backgroundColor = "blue";
+  bar1.classList.remove('compare')
+  bar1.classList.remove('isgreater')
   return new Promise((resolve) => setTimeout(resolve, 10));
 }
 
 async function isLess(bar1, bar2) {
-  bar1.style.backgroundColor = "purple";
-  bar2.style.backgroundColor = "purple";
+  bar1.classList.add('isgreater')
+  bar2.classList.add('isgreater')
   return new Promise((resolve) => setTimeout(resolve, 10));
 }
 
 function unselect(bar1, bar2) {
-  bar1.style.backgroundColor = "blue";
-  bar2.style.backgroundColor = "blue";
+  bar1.classList.remove('compare')
+  bar1.classList.remove('isgreater')
+  bar2.classList.remove('compare')
+  bar2.classList.remove('isgreater')
 }
 
 function pauseIt() {
@@ -110,7 +116,7 @@ function pauseIt() {
 }
 
 function highest(num, bar, speed) {
-  if (speed === 1) {
+  if (speed <500) {
     return new Promise((resolve) => setTimeout(resolve, speed));
   }
   if (num === 1) {

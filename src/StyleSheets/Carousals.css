@@ -1,0 +1,303 @@
+.carousel-topic {
+    text-align: center;
+    font-family: "IBM Plex Sans", sans-serif;
+    color: rgb(236, 236, 236);
+    font-weight: 700;
+    font-size: 2vw;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.main-carousel {
+    padding: 0 1em;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.carousel-item {
+    width: 100%  !important;
+    height: 100% !important;
+}
+
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-indicators [data-bs-target] {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-indicators{
+    bottom: 50px;
+}
+
+.carousel-indicators .active {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+.img-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.insert-img-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.bubble-img-2{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.quick-img{
+    width: 15vw;
+}
+.insert-img{
+    padding: 0.4em;
+    width: 15vw;
+}
+
+.heap-img{
+    width: 20vw;
+    max-width: 20vw !important;
+    padding: 1em;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.heap-img-1{
+    margin: 1em;
+    padding: 1em;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.bubble-child-3{
+    margin-top: 1em;
+}
+
+
+.quick-list{
+    margin-top: 1em;
+}
+
+.insert-list{
+    margin-top: 0.5em;
+}
+
+.insert-list li{
+    font-size: 0.85em;
+}
+
+.heap-list-1 li{
+    margin-top: 1em;
+}
+
+.heap-list-2{
+    margin-top: 1em;
+}
+
+.heap-img-sm{
+    width: 15vw;
+    padding: 0.3em;
+}
+
+.heap-img-sm-b{
+    background-color: rgba(255,255,255,0.5);
+}
+
+.heap-img-flex-div{
+    width: 100%;
+    display: flex;
+    gap: 1em;
+}
+
+.heap-img-2{
+    height: 70vh;
+}
+
+.merge-img-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.merge-img-div img{
+    height: 25vw;
+}
+
+.merge-img{
+    width: 25vw;
+}
+
+.heap-child{
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-top: 1em;
+}
+
+.child-list-1{
+    border-right: 1px solid #fff;
+}
+
+.merge-child-2{
+    margin-top: 1.5em;
+}
+
+.merge-child-2 ul{
+    margin-top: 1em;
+}
+
+p{
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: minmax(1.5vw,1.5em);
+    font-weight: 400;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: "IBM Plex Sans", sans-serif;
+}
+
+.color-black{
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.mar-0{
+    margin: 0 !important;
+}
+
+.align-header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}
+
+/******************path finding*****************/
+
+/****************child divs*********************/
+
+.astar-child-1 ul li{
+    font-size: 0.8em;
+}
+
+.astar-child-2{
+    width: 100%;
+    display: flex;
+    font-size: 0.8em;
+}
+
+.astar-child-4, .bfs-child-3, .bi-child-3{
+    margin-top: 1em;
+}
+
+.dijkstra-child-3{
+    padding: 0.5em;
+}
+
+.bfs-child-1, .bfs-child-1 ul li,.dfs-child-2 , .dfs-child-2 ul li{
+    font-size: 0.9em;
+}
+
+/****************child divs*********************/
+
+/*******************img divs*********************/
+
+.astar-img-div-1, .dijkstra-img-div-1,.dijkstra-img-div-2, .bfs-img-div-2, .bi-img-div-1, .bi-img-div-2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.astar-img-div-1 *, .dijkstra-img-div-2 *, .bfs-img-div-2 *, .bfs-img-div-2 *,.bi-img-div-2 *{
+    padding:  0.5em;
+}
+
+.dijkstra-img-div-1 img{
+    padding: 1em;
+}
+
+
+/*******************img divs*********************/
+
+/********************images**********************/
+
+.astar-img-1{
+    width: 10vw;
+    margin-top: 0.5em;
+}
+.astar-img-2{
+    width: 10vw;
+    padding: 0.5em;
+}
+.astar-img-3{
+    width: 17.5vw;
+    padding: 0.5em;
+}
+
+.astar-img-4, .dijkstra-img-3{
+    width: 23vw;
+    padding: 1em;
+}
+
+.dijkstra-img-2{
+    width: 20vw;
+    padding: 0.5em;
+}
+
+.dijkstra-img-4{
+    width: 15vw;
+    padding: 1em;
+}
+
+.bfs-img-1{
+    width: 18vw;
+}
+.bfs-img-2{
+    width: 12vw;
+    padding:0.5em;
+}
+.bfs-img-3{
+    width: 18vw;
+    padding:1em;
+}
+
+.dfs-img-1{
+    width: 15vw;
+}
+.dfs-img-2{
+    width: 10vw;
+}
+.bi-img-2{
+    width: 12vw;
+    padding: 0.5em;
+}
+
+.bi-img-3{
+    width: 25vw;
+    padding: 1em;
+}
+
+/********************images**********************/
+
+/********************videos*************************/
+
+.astar-video-div, .dijkstra-video-div, .bfs-video-div, .dfs-video-div, .bi-video-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.astar-video, .dijkstra-video, .bfs-video, .dfs-video, .bi-video{
+    width: 100%;
+    padding: 2em 4em;
+}
+
+/********************videos*************************/
+
+
+/******************path finding*****************/

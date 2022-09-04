@@ -1,22 +1,19 @@
 import React, { Component } from "react";
 import SortingComparatorNav from "./SortingComparatorNav";
-import LeftCompare from "./LeftCompare";
-import RightComparision from "./RightComparision";
+import $ from "jquery";
 import "./SortingComparator.css";
 import * as bubble from "../Sortingalgo/Bubblesort.js";
 import * as quick from "../Sortingalgo/Quicksort.js";
 import * as merge from "../Sortingalgo/Mergesort.js";
 import * as insert from "../Sortingalgo/Insertsort.js";
-import * as heap from "../Sortingalgo/Heapsort.js"
+import * as heap from "../Sortingalgo/Heapsort.js";
 
-
-let len=30;
+let len = 30;
 
 export default class SortingComparator extends Component {
-
   constructor(props) {
     super(props);
-    this.state = { array1: [],array2: []  };
+    this.state = { array1: [], array2: [],isRunning1: false ,isRunning2: false,animationSpeed: 50, };
   }
 
   componentDidMount() {
@@ -27,7 +24,7 @@ export default class SortingComparator extends Component {
     const arr1 = [];
     const arr2 = [];
     while (arr1.length < len) {
-      var r = Math.floor(Math.random() * 700) + 1;
+      var r = Math.floor(Math.random() * 600) + 1;
       if (arr1.indexOf(r) === -1) arr1.push(r);
       if (arr2.indexOf(r) === -1) arr2.push(r);
     }
@@ -42,148 +39,198 @@ export default class SortingComparator extends Component {
     let bars1 = document.getElementsByClassName("left-arrayElement");
     let bars2 = document.getElementsByClassName("right-arrayElement");
     for (var j = 0; j < this.state.array1.length; j++) {
-      bars1[j].style.backgroundColor = "blue";
-      bars2[j].style.backgroundColor = "blue";
+      bars1[j].classList.remove('compare');
+      bars2[j].classList.remove('compare');
+      bars1[j].classList.remove('isgreater');
+      bars2[j].classList.remove('isgreater');
+      bars1[j].classList.remove('sorted');
+      bars2[j].classList.remove('sorted');
     }
   }
 
-  BubbleSort2() {
+  async BubbleSort2() {
+    this.setState({isRunning2: true})
     let elem = document.getElementsByClassName("right-arrayElement");
-    let bar = Array.prototype.slice.call(elem)
-    bubble.bubblesort(this.state.array2, bar);
-  }
-  QuickSort2() {
-    let bar = document.getElementsByClassName("right-arrayElement");
-    quick.quicksort(this.state.array2, bar, (arr) =>
-    this.setState({ array2: arr })
+    let bar = Array.prototype.slice.call(elem);
+    await bubble.bubblesort(this.state.array2, bar,(arr) =>{
+    this.setState({ array2: arr })},
+    this.state.animationSpeed
     );
+    this.setState({isRunning2: false})
   }
-  MergeSort2() {
+  async QuickSort2() {
+    this.setState({isRunning2: true})
     let bar = document.getElementsByClassName("right-arrayElement");
-    merge.mergesort(this.state.array2, bar,(arr) =>{
+    await quick.quicksort(this.state.array2, bar, (arr) =>{
       this.setState({ array2: arr })
-    });
+    },this.state.animationSpeed);
+      this.setState({isRunning2: false})
   }
-  InsertSort2() {
+  async MergeSort2() {
+    this.setState({isRunning2: true})
     let bar = document.getElementsByClassName("right-arrayElement");
-    insert.insertSort(this.state.array2, bar,(arr) =>{
-      this.setState({ array2: arr })
-    });
+    await merge.mergesort(this.state.array2, bar, (arr) => {
+      this.setState({ array2: arr });
+    },this.state.animationSpeed);
+    this.setState({isRunning2: false})
   }
-  HeapSort2() {
+  async InsertSort2() {
+    this.setState({isRunning2: true})
+    let bar = document.getElementsByClassName("right-arrayElement");
+    await insert.insertSort(this.state.array2, bar, (arr) => {
+      this.setState({ array2: arr });
+    },this.state.animationSpeed);
+    this.setState({isRunning2: false})
+  }
+  async HeapSort2() {
+    this.setState({isRunning2: true})
     let elem = document.getElementsByClassName("right-arrayElement");
-    let bar = Array.prototype.slice.call(elem)
-    let array = this.state.array2
-    heap.heapSort(array, bar,(arr) =>{
-    this.setState({ array2: arr })
-  }
-    );
+    let bar = Array.prototype.slice.call(elem);
+    let array = this.state.array2;
+    await heap.heapSort(array, bar, (arr) => {
+      this.setState({ array2: arr });
+    },this.state.animationSpeed);
+    this.setState({isRunning2: false})
   }
 
-  BubbleSort1() {
+  async BubbleSort1() {
+    this.setState({isRunning1: true})
     let elem = document.getElementsByClassName("left-arrayElement");
     let bar = Array.prototype.slice.call(elem);
-    let array = this.state.array1
-    bubble.bubblesort(array, bar,(arr) =>{
-    this.setState({ array1: arr })
+    let array = this.state.array1;
+    await bubble.bubblesort(array, bar, (arr) => {
+      this.setState({ array1: arr });
+    },this.state.animationSpeed);
+    this.setState({isRunning1: false})
   }
-    );
-  }
-  QuickSort1() {
+  async QuickSort1() {
+    this.setState({isRunning1: true})
     let bar = document.getElementsByClassName("left-arrayElement");
-    quick.quicksort(this.state.array1, bar,(arr) =>{
-      this.setState({ array1: arr })
-    });
+    await quick.quicksort(this.state.array1, bar, (arr) => {
+      this.setState({ array1: arr });
+    },this.state.animationSpeed);
+    this.setState({isRunning1: false})
   }
-  MergeSort1() {
+  async MergeSort1() {
+    this.setState({isRunning1: true})
     let bar = document.getElementsByClassName("left-arrayElement");
-    merge.mergesort(this.state.array1, bar,(arr) =>{
-      this.setState({ array1: arr })
-    });
+    await merge.mergesort(this.state.array1, bar, (arr) => {
+      this.setState({ array1: arr });
+    },this.state.animationSpeed);
+    this.setState({isRunning1: false})
   }
-  InsertSort1() {
+  async InsertSort1() {
+    this.setState({isRunning1: true})
     let bar = document.getElementsByClassName("left-arrayElement");
-    insert.insertSort(this.state.array1, bar,(arr) =>{
-      this.setState({ array1: arr })
-    });
+    await insert.insertSort(this.state.array1, bar, (arr) => {
+      this.setState({ array1: arr });
+    },this.state.animationSpeed);
+    this.setState({isRunning1: false})
   }
-  HeapSort1() {
+  async HeapSort1() {
+    this.setState({isRunning1: true})
     let bar = document.getElementsByClassName("left-arrayElement");
-    heap.heapSort(this.state.array1, bar,(arr) =>{
-      this.setState({ array1: arr })
-    });
+    await heap.heapSort(this.state.array1, bar, (arr) => {
+      this.setState({ array1: arr });
+    },this.state.animationSpeed);
+    this.setState({isRunning1: false})
+  }
+
+  changeAnimationSpeed(value) {
+    if (value === 2) {
+      this.setState({ animationSpeed: 1 });
+    }
+    if (value === 1) {
+      this.setState({ animationSpeed: 10 });
+    }
+    if (value === 0) {
+      this.setState({ animationSpeed: 50 });
+    }
   }
 
   render() {
-    const {array1,array2}=this.state
+    const { array1, array2,isRunning1,isRunning2 } = this.state;
+
+    const numWidth = (Math.floor($(document).width()/2) / (array1.length * 2));
+    const width = `${numWidth}px`;
+    const numMargin = array1.length < 5 ?
+      12 : array1.length < 8 ?
+        10 : array1.length < 11 ?
+          8 : array1.length < 20 ?
+            6 : array1.length < 50 ?
+              4 : array1.length < 100 ?
+                3 : array1.length < 130 ?
+                  2.5 : 2;
+    const margin = `${numMargin}px`;
+
     return (
       <>
         <SortingComparatorNav
           onResetArray={() => {
             this.resetArray();
           }}
-          onBubbleSort1={() => {
+          BubbleSort1={() => {
             this.BubbleSort1();
           }}
-          onQuickSort1={() => {
+          QuickSort1={() => {
             this.QuickSort1();
           }}
-          onMergeSort1={() => {
+          MergeSort1={() => {
             this.MergeSort1();
           }}
-          onInsertSort1={() => {
+          InsertSort1={() => {
             this.InsertSort1();
           }}
-          onHeapSort1={() => {
+          HeapSort1={() => {
             this.HeapSort1();
           }}
-          onBubbleSort2={() => {
+          BubbleSort2={() => {
             this.BubbleSort2();
           }}
-          onQuickSort2={() => {
+          QuickSort2={() => {
             this.QuickSort2();
           }}
-          onMergeSort2={() => {
+          MergeSort2={() => {
             this.MergeSort2();
           }}
-          onInsertSort2={() => {
+          InsertSort2={() => {
             this.InsertSort2();
           }}
-          onHeapSort2={() => {
+          HeapSort2={() => {
             this.HeapSort2();
           }}
+          isrunning = {isRunning1||isRunning2}
+          handleSpeedChange={(val) => this.changeAnimationSpeed(val)}
         />
         <div className="main-compare">
           <div className="left-compare">
-          <div id="left-bodyContainer">
-          {array1.map((value, idx) => (
-            <div
-              className="left-arrayElement"
-              key={idx}
-              style={{
-                height: `${value}px`,
-                marginLeft: "2px",
-                marginRight: "2px",
-                width: "7px",
-                backgroundColor: "blue",
-                fontSize: "5px",
-              }}
-            ></div>
-          ))}
-        </div>
+            <div id="left-bodyContainer">
+              {array1.map((value, idx) => (
+                <div
+                  className="left-arrayElement"
+                  key={idx}
+                  style={{
+                    height: `${value}px`,
+                    marginLeft: margin,
+                    marginRight: margin,
+                    width: width,
+                    fontSize: "5px",
+                  }}
+                ></div>
+              ))}
+            </div>
           </div>
           <div className="right-compare">
-          <div id="right-bodyContainer">
+            <div id="right-bodyContainer">
               {array2.map((value, idx) => (
                 <div
                   className="right-arrayElement"
                   key={idx}
                   style={{
                     height: `${value}px`,
-                    marginLeft: "2px",
-                    marginRight: "2px",
-                    width: "7px",
-                    backgroundColor: "blue",
+                    marginLeft: margin,
+                    marginRight: margin,
+                    width: width,
                     fontSize: "5px",
                   }}
                 ></div>

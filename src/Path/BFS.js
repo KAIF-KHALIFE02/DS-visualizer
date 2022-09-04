@@ -1,4 +1,4 @@
-export async function breadthfs(nodes,startnode,endnode,grid){
+export async function breadthfs(nodes,startnode,endnode,grid,nodesState,speed){
     let queue = [];
     let visitedNodes = [];
     startnode.distance=0;
@@ -7,7 +7,8 @@ export async function breadthfs(nodes,startnode,endnode,grid){
         let currentNode = queue.shift();
         if(currentNode.isWall || currentNode.isVisited) continue
         currentNode.isVisited = true;
-        await colorNeighbour(currentNode.row,currentNode.col,grid)
+        await colorNeighbour(currentNode,speed)
+        nodesState(nodes)
         if(currentNode.distance === Infinity) return visitedNodes
         visitedNodes.push(currentNode);
         if(currentNode === endnode){
@@ -18,10 +19,15 @@ export async function breadthfs(nodes,startnode,endnode,grid){
     }
 }
 
-function colorNeighbour(row,col,grid){
-    grid[0].childNodes[row].childNodes[col].style.backgroundColor = 'yellow';
-    return new Promise(resolve => setTimeout(resolve,1))
+function colorNeighbour(node,speed){
+  node.isVisited = true
+  return new Promise(resolve => setTimeout(resolve,speed))
 }
+
+// function colorNeighbour(row,col,grid){
+//     grid[0].childNodes[row].childNodes[col].style.backgroundColor = 'yellow';
+//     return new Promise(resolve => setTimeout(resolve,1))
+// }
 
 function updateUnvisitedNeighbors(node, nodes,queue) {
     const unvisitedNeighbors = getUnvisitedNeighbors(node, nodes);

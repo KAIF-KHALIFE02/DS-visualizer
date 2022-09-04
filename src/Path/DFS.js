@@ -1,4 +1,4 @@
-export async function depthfs(nodes,startnode,endnode,grid){
+export async function depthfs(nodes,startnode,endnode,grid,nodesState,speed){
     let stack = [];
     let unvisitedNodes = [];
     let visitedNodes = [];
@@ -8,7 +8,8 @@ export async function depthfs(nodes,startnode,endnode,grid){
         if(currentNode.isWall) continue;
         if(currentNode === endnode) return visitedNodes;
         visitedNodes.push(currentNode)
-        await colorNeighbour(currentNode.row,currentNode.col,grid)
+        await colorNeighbour(currentNode,speed)
+        nodesState(nodes)
         currentNode.isVisited = true;
         let unvisitedNeighbors = getUnvisitedNeighbors(currentNode,nodes)
         for(let unvisitedNeighbor of unvisitedNeighbors){
@@ -19,10 +20,16 @@ export async function depthfs(nodes,startnode,endnode,grid){
     return visitedNodes;
 }
 
-function colorNeighbour(row,col,grid){
-    grid[0].childNodes[row].childNodes[col].style.backgroundColor = 'yellow';
-    return new Promise(resolve => setTimeout(resolve,1))
+function colorNeighbour(node,speed){
+    node.isVisited = true
+    return new Promise(resolve => setTimeout(resolve,speed))
 }
+
+
+// function colorNeighbour(row,col,grid){
+//     grid[0].childNodes[row].childNodes[col].style.backgroundColor = 'yellow';
+//     return new Promise(resolve => setTimeout(resolve,1))
+// }
 
 function getUnvisitedNeighbors(node, nodes) {
     const neighbors = [];

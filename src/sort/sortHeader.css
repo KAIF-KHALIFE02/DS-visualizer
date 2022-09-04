@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400&display=swap');
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600");
+
+
+.sortheader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  /* border: 1px solid white; */
+  /* background-color: #E0E5EC; */
+  padding: 0.5em;
+}
+
+.header-sliders {
+  padding:0 1em ;
+  width: 30%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+  background-color: rgba(255,255,255,0.15);
+}
+
+
+.size-slider,
+.animation-slider {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+}
+
+
+.slider-text {
+  font-family: "IBM Plex Sans", sans-serif;
+  color: rgb(236, 236, 236);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.all-buttons{
+  width: 50%;
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.other-buttons{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0.5em;
+}
+
+/* .btn-group__item:disabled{
+  color: #fff;
+}
+
+.btn-group__item:disabled:hover{
+  color: #fff;
+} */
+/***************Button group********************/
+
+.btn-group{
+  width: 100%;
+  display: flex;
+  gap: 0.5em;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-group__item {
+  flex: 1;
+  height: 45px;
+  font-size: minmax(0.5rem,1rem);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: rgb(236, 236, 236);
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+  position: relative;
+  transition: all 0.5s;
+  z-index: 1;
+ }
+ 
+ .btn-group__item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background-color: #3D434D;
+  /* background-color: #203231; */
+  z-index: -1;
+  transition: all 0.5s;
+ }
+ 
+ .btn-group__item:hover::before {
+  width: 100%;
+ }
+ 
+ .btn-group__item:hover {
+  color: #0C121F;
+ }
+ 
+
+/**************Tutorial button *********/
+
+.css-sghohy-MuiButtonBase-root-MuiButton-root.Mui-disabled{
+  color: #fff !important;
+}
+
+.tutorial-btn {
+  display: inline-block;
+  padding: 0.9rem 1.8rem;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  border: 3px solid #38615f !important;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent !important;
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 1;
+  font-family: inherit;
+ }
+ 
+ .tutorial-btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #38615f;
+  transform: translateX(-100%);
+  transition: all .3s;
+  z-index: -1;
+ }
+ 
+ .tutorial-btn:hover::before {
+  transform: translateX(0);
+ }
+
+/**************Tutorial button *********/
+
+
+/**************Tutorial button arrow*********/
+
+.tutorial-btn-arrow{
+  display: inline-block;
+  padding: 0.9rem 1.8rem;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  border: 3px solid #38615f !important;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent !important;
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 1;
+  font-family: inherit;
+ }
+ 
+ .tutorial-btn-arrow::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #38615f;
+  transform: translatey(-100%);
+  transition: all .3s;
+  z-index: -1;
+ }
+ 
+ .tutorial-btn-arrow::before {
+  transform: translateY(0);
+ }
+
+/**************Tutorial button arrow*********/
+
+/**************tutorial button menu ********/
+
+#split-button-menu{
+  background-color: #38615f !important;
+}
+
+#split-button-menu * {
+  font-size: 0.8em;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 2px;
+  position: relative;
+  color: #122726 !important;
+  text-decoration: none;
+  transition: 0.3s ease all;
+  z-index: 1;
+ }
+
+#split-button-menu *:before {
+  transition: 0.5s all ease !important;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  opacity: 0;
+  content: '';
+  background-color: #122726 !important;
+  z-index: -1;
+ }
+ 
+ #split-button-menu *:hover, #split-button-menu *:focus {
+  color: white !important;
+ }
+ 
+ #split-button-menu *:hover:before, #split-button-menu *:focus:before {
+  transition: 0.5s all ease !important;
+  left: 0;
+  right: 0;
+  opacity: 1;
+ }
+ 
+ #split-button-menu *:active {
+  transform: scale(0.9) !important;
+ }
+
+/**************tutorial button menu ********/
+
+
+/***************Switch Button *************/
+
+.css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track{
+  background-color: #4aa19d !important;
+}
+
+.css-d25qz8-MuiSwitch-root{
+  width: 65px !important;
+  height: 43px !important;
+}
+
+.css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase{
+  top: 2px !important;
+  left: 1px !important;
+}
+
+.css-5ryogn-MuiButtonBase-root-MuiSwitch-switchBase.Mui-checked{
+  transform: translateX(24px) !important;
+  color: #122726 !important;
+}
+
+/***************Switch Button *************/
+
+/******************Modal********************/
+
+.css-1wnsr1i{
+  background-color: #259b9b !important;
+  border: 2px solid #013249 !important;
+  width: 60% !important;
+  height: 80% !important;
+  padding: 0 !important;
+}
+
+.carousel-control-next, .carousel-control-prev{
+  width: auto;
+}
+
+/******************Modal********************/

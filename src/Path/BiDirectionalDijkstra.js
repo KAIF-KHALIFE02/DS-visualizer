@@ -3,7 +3,14 @@ let unvisitedNodesFromEnd = [];
 let foundByBothTarget = false;
 let foundNode = null;
 let lastNode = null;
-export async function Bidirectionaldijkstra(nodes, startNode, endNode, grid) {
+export async function Bidirectionaldijkstra(
+  nodes,
+  startNode,
+  endNode,
+  grid,
+  nodesState,
+  speed
+) {
   startNode.distance = 0;
   endNode.distance = 0;
   unvisitedNodesFromStart.push(startNode);
@@ -14,18 +21,13 @@ export async function Bidirectionaldijkstra(nodes, startNode, endNode, grid) {
     const currentNodeFromStart = unvisitedNodesFromStart.shift();
     const currentNodeFromEnd = unvisitedNodesFromEnd.shift();
     if (!currentNodeFromStart.isWall) {
-      currentNodeFromStart.isVisited = true;
-      await colorNeighbour(
-        currentNodeFromStart.row,
-        currentNodeFromStart.col,
-        grid
-      );
+      await colorNeighbour(currentNodeFromStart, speed);
+      nodesState(nodes);
       if (currentNodeFromStart.distance === Infinity) {
         console.log("i am at infity");
         return;
       }
       if (foundByBothTarget) {
-        console.log(unvisitedNodesFromStart);
         return;
       }
     }
@@ -39,18 +41,13 @@ export async function Bidirectionaldijkstra(nodes, startNode, endNode, grid) {
     );
 
     if (!currentNodeFromEnd.isWall) {
-      currentNodeFromEnd.isVisited = true;
-      await colorNeighbour(
-        currentNodeFromEnd.row,
-        currentNodeFromEnd.col,
-        grid
-      );
+      await colorNeighbour(currentNodeFromEnd, speed);
+      nodesState(nodes);
       if (currentNodeFromEnd.distance === Infinity) {
         console.log("i am at infity");
         return;
       }
       if (foundByBothTarget) {
-        console.log(unvisitedNodesFromStart);
         return;
       }
     }
@@ -63,16 +60,20 @@ export async function Bidirectionaldijkstra(nodes, startNode, endNode, grid) {
       grid
     );
     if (currentNodeFromStart === endNode || currentNodeFromEnd === startNode) {
-      console.log("found");
       return;
     }
   }
 }
 
-function colorNeighbour(row, col, grid) {
-  grid[0].childNodes[row].childNodes[col].style.backgroundColor = "yellow";
-  return new Promise((resolve) => setTimeout(resolve, 1));
+function colorNeighbour(node, speed) {
+  node.isVisited = true;
+  return new Promise((resolve) => setTimeout(resolve, speed));
 }
+
+// function colorNeighbour(row, col, grid) {
+//   grid[0].childNodes[row].childNodes[col].style.backgroundColor = "yellow";
+//   return new Promise((resolve) => setTimeout(resolve, 1));
+// }
 
 function sortNodes(unvisitednodes) {
   unvisitednodes.sort((nodeA, nodeB) => nodeA.distance - nodeB.distance);
@@ -95,11 +96,6 @@ async function updateUnvisitedNeighbors(
         foundNode = neighbor;
         lastNode = node;
         neighbor.isVisited = true;
-      await colorNeighbour(
-        neighbor.row,
-        neighbor.col,
-        grid
-      );
         return;
       }
     } else if (isFinish) {
@@ -108,11 +104,6 @@ async function updateUnvisitedNeighbors(
         foundNode = neighbor;
         lastNode = node;
         neighbor.isVisited = true;
-      await colorNeighbour(
-        neighbor.row,
-        neighbor.col,
-        grid
-      );
         return;
       }
     }
@@ -142,8 +133,6 @@ export function getBidirectionalShortestPath() {
   let nodesInShortestPathFromEnd = [];
   let current1 = foundNode;
   let current2 = lastNode;
-  console.log(current1);
-  console.log(current2);
   while (current1 !== null) {
     nodesInShortestPathFromStart.unshift(current1);
     current1 = current1.previousNode;
@@ -152,5 +141,10 @@ export function getBidirectionalShortestPath() {
     nodesInShortestPathFromStart.push(current2);
     current2 = current2.previousNode;
   }
+  unvisitedNodesFromStart = [];
+  unvisitedNodesFromEnd = [];
+  foundByBothTarget = false;
+  foundNode = null;
+  lastNode = null;
   return nodesInShortestPathFromStart.concat(nodesInShortestPathFromEnd);
 }

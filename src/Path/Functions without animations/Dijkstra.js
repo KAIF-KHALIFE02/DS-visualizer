@@ -1,4 +1,4 @@
-export function dijkstraNA(nodes,startNode,endNode,grid){
+export function dijkstraNA(nodes,startNode,endNode){
     startNode.distance = 0;
     let unvisitedNodes = getAllNodes(nodes)
     while (!!unvisitedNodes.length) {
@@ -10,17 +10,19 @@ export function dijkstraNA(nodes,startNode,endNode,grid){
              return ;
         }
         closestNode.isVisited = true;
-         colorNeighbour(closestNode.row,closestNode.col,grid)
+        //  colorNeighbour(closestNode.row,closestNode.col,grid)
         if (closestNode === endNode){
             return;
         } 
         updateUnvisitedNeighbors(closestNode, nodes);
     }
+    console.log('path found')
+    // setS
 }
 
-function colorNeighbour(row,col,grid){
-    grid[0].childNodes[row].childNodes[col].style.backgroundColor = 'yellow';
-}
+// function colorNeighbour(row,col,grid){
+//     grid[0].childNodes[row].childNodes[col].style.backgroundColor = 'yellow';
+// }
 
 function getAllNodes(nodes){
     let nodearray = []
@@ -54,7 +56,7 @@ function updateUnvisitedNeighbors(node, nodes) {
     return neighbors.filter(neighbor => !neighbor.isVisited);
   }
 
-  export function getNodesInShortestPathOrder(finishNode) {
+  export function getNodesInShortestPathOrderNA(finishNode) {
     const nodesInShortestPathOrder = [];
     let currentNode = finishNode;
     while (currentNode !== null) {

@@ -7,37 +7,78 @@ import * as quick from "../Sortingalgo/Quicksort.js";
 import * as merge from "../Sortingalgo/Mergesort.js";
 import * as insert from "../Sortingalgo/Insertsort.js";
 import * as heap from "../Sortingalgo/Heapsort.js";
+import * as bubbleWOA from "../SortWithoutAnimate/BubbleSort.js";
+import * as quickWOA from "../SortWithoutAnimate/QuickSort.js";
+import * as heapWOA from "../SortWithoutAnimate/HeapSort.js";
+import * as insertWOA from "../SortWithoutAnimate/InsertSort.js";
+import * as mergeWOA from "../SortWithoutAnimate/MergeSort.js";
+import Worker from "../worker/worker";
+import WorkerBuilder from "../worker/worker-builder";
+import { Helmet } from "react-helmet";
+import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
+import * as SortingAnimations from '../StyleJS/animation.js'
 
+let instance = new WorkerBuilder(Worker);
 
 export default class Sortbody extends Component {
   constructor(props) {
     super(props);
-    this.state = { array: [],len:40, Pause: false,tutorial: false,animationSpeed:50 };
-    this.changeArraySize = this.changeArraySize.bind(this)
+    this.state = {
+      array: [],
+      arrayWOA: [],
+      isRunning: false,
+      isTutorial: false,
+      len: 40,
+      prevLen: 40,
+      Pause: false,
+      tutorial: false,
+      animationSpeed: 50,
+      prevAnimationSpeed: 50,
+      stopArray:false
+    };
+    this.changeArraySize = this.changeArraySize.bind(this);
+    this.isTutorial = this.isTutorial.bind(this)
   }
 
   componentDidMount() {
+    instance.onmessage = (message) => {
+      if (message) {
+        console.log("Message from worker", message.data);
+      }
+    };
     this.generateArray();
+    setTimeout(()=>{
+      let bars = document.getElementsByClassName("arrayElement");
+      SortingAnimations.animateBarsEntry(bars)
+    },1000)
   }
 
+
   generateArray() {
+    let length1 = this.state.len;
+    console.log(this.state.len)
     const arr = [];
-    while (arr.length < this.state.len) {
+    const arrWOA = [];
+    while (arr.length < length1) {
       var r = Math.floor(Math.random() * 700) + 1;
       if (arr.indexOf(r) === -1) arr.push(r);
+      if (arrWOA.indexOf(r) === -1) arrWOA.push(r);
     }
     this.setState({
       array: arr,
+      arrayWOA: arrWOA,
     });
   }
 
   resetArray() {
     this.generateArray();
     let bars = document.getElementsByClassName("arrayElement");
-    let barsBack = document.getElementsByClassName("eachBarDiv");
+    // let barsBack = document.getElementsByClassName("eachBarDiv");
     for (var j = 0; j < this.state.array.length; j++) {
-      bars[j].style.backgroundColor = "blue";
-      barsBack[j].style.backgroundColor = "";
+      bars[j].classList.remove('compare');
+      bars[j].classList.remove('isgreater');
+      bars[j].classList.remove('sorted');
+      // barsBack[j].style.backgroundColor = "";
     }
   }
 
@@ -56,36 +97,89 @@ export default class Sortbody extends Component {
     // console.log(bar[1].style.height)
   }
 
-  BubbleSort() {
-    // console.log(this.state.animationSpeed)
+  async BubbleSort(check) {
+    // const startMs =
+    //   (window.performance.timeOrigin + window.performance.now()) /
+    //   0.00000000001;
+    // const startNs = startMs.toString().slice(-5);
+    // const endMs =
+    //   (window.performance.timeOrigin + window.performance.now()) /
+    //   0.00000000001;
+    // const endNs = endMs.toString().slice(-5);
+    // console.log(startMs);
+    // console.log(endMs);
+    this.setState({ isRunning: true });
     let bar = document.getElementsByClassName("arrayElement");
-    let mySortedArray = bubble.bubblesort(this.state.array, bar, (arr) => {
-      this.setState({ array: arr });
-    },this.state.animationSpeed);
+    let newArray = this.state.arrayWOA;
+    bubbleWOA.bubblesort(newArray);
+    let mySortedArray = await bubble.bubblesort(
+      this.state.array,
+      bar,
+      (arr) => {
+        if(this.state.stopArray){
+          this.setState({ array: arr });
+        }
+      },
+      this.state.animationSpeed
+    );
+    SortingAnimations.animateBarsSorted(bar)
+    this.setState({ isRunning: false });
   }
-  QuickSort() {
+  async QuickSort() {
+    this.setState({ isRunning: true });
     let bar = document.getElementsByClassName("arrayElement");
-    let mySortedArray = quick.quicksort(this.state.array, bar, (arr) => {
-      this.setState({ array: arr });
-    },this.state.animationSpeed);
+    let mySortedArray = await quick.quicksort(
+      this.state.array,
+      bar,
+      (arr) => {
+        this.setState({ array: arr });
+      },
+      this.state.animationSpeed
+    );
+    SortingAnimations.animateBarsSorted(bar)
+    this.setState({ isRunning: false });
   }
-  MergeSort() {
+  async MergeSort() {
+    this.setState({ isRunning: true });
     let bar = document.getElementsByClassName("arrayElement");
-    let mySortedArray = merge.mergesort(this.state.array, bar, (arr) => {
-      this.setState({ array: arr });
-    },this.state.animationSpeed);
+    let mySortedArray = await merge.mergesort(
+      this.state.array,
+      bar,
+      (arr) => {
+        this.setState({ array: arr });
+      },
+      this.state.animationSpeed
+    );
+    SortingAnimations.animateBarsSorted(bar)
+    this.setState({ isRunning: false });
   }
-  InsertSort() {
+  async InsertSort() {
+    this.setState({ isRunning: true });
     let bar = document.getElementsByClassName("arrayElement");
-    let mySortedArray = insert.insertSort(this.state.array, bar, (arr) => {
-      this.setState({ array: arr });
-    },this.state.animationSpeed);
+    let mySortedArray = await insert.insertSort(
+      this.state.array,
+      bar,
+      (arr) => {
+        this.setState({ array: arr });
+      },
+      this.state.animationSpeed
+    );
+    SortingAnimations.animateBarsSorted(bar)
+    this.setState({ isRunning: false });
   }
-  HeapSort() {
+  async HeapSort() {
+    this.setState({ isRunning: true });
     let bar = document.getElementsByClassName("arrayElement");
-    let mySortedArray = heap.heapSort(this.state.array, bar, (arr) => {
-      this.setState({ array: arr });
-    },this.state.animationSpeed);
+    let mySortedArray = await heap.heapSort(
+      this.state.array,
+      bar,
+      (arr) => {
+        this.setState({ array: arr });
+      },
+      this.state.animationSpeed
+    );
+    SortingAnimations.animateBarsSorted(bar)
+    this.setState({ isRunning: false });
   }
 
   arraysAreEqual(arrayone, arraytwo) {
@@ -96,47 +190,62 @@ export default class Sortbody extends Component {
     return true;
   }
 
-  isTutorial(){
-    let checked = String(document.getElementById('tutSwitch').checked);
-    console.log(checked)
-    this.setState({tutorial: checked})
-    if(checked === 'true'){
-      this.setState({animationSpeed: 500})
-      console.log("500")
-    }
-    else{
-      console.log("1")
-      this.setState({animationSpeed: 1})
-    }
-  }
-
-  changeArraySize(value){
-    this.setState({len: value})
-    this.generateArray()
-  }
-  changeAnimationSpeed(value){
-    if(value === 2){
-      this.setState({animationSpeed:1})
-    }
-    if(value === 1){
-      this.setState({animationSpeed:10})
-    }
-    if(value === 0){
-      this.setState({animationSpeed:50})
+  async isTutorial() {
+    let checked = String(document.getElementById("tutSwitch").checked);
+    this.setState({ tutorial: checked , prevAnimationSpeed: this.state.animationSpeed,prevLen:this.state.len});
+    let bars = document.getElementsByClassName('arrayElement')
+    if (checked === "true") {
+      this.setState({ animationSpeed: 500,len:15,isTutorial:true},function(){
+        this.resetArray()
+      });
+      document.getElementById('captions').style.display = 'flex'
+      // SortingAnimations.barsDisplayNone(bars)
+      SortingAnimations.slideInClass()
+      await SortingAnimations.addBarsEntryAnimation(bars)
+    } else {
+      this.setState({ animationSpeed: this.state.prevAnimationSpeed,len: this.state.prevLen,isTutorial: false },function(){
+        this.resetArray()
+      });
+      // SortingAnimations.barsDisplayNone(bars)
+      SortingAnimations.slideOutClass()
+      await SortingAnimations.addBarsEntryAnimation(bars)
+      // document.getElementById('captions').style.display = 'none'
     }
   }
 
+  changeArraySize(value) {
+    this.setState({ len: value });
+    this.resetArray();
+  }
+  changeAnimationSpeed(value) {
+    if (value === 2) {
+      this.setState({ animationSpeed: 1 });
+    }
+    if (value === 1) {
+      this.setState({ animationSpeed: 10 });
+    }
+    if (value === 0) {
+      this.setState({ animationSpeed: 50 });
+    }
+  }
+
+  Stop() {
+    this.setState({stopArray: true})
+    
+  }
   // Pause(){
-  //   if(this.state.Pause === true) return;
-  //   this.setState({Pause: true})
+  //   console.log('pausing')
+  //   process
   // }
   // Play(){
-  //   if(this.state.Pause === false) return;
-  //   this.setState({Pause: false})
+  //   if (this.myVar !== -1) {
+  //     clearInterval(this.myVar);
+  //     this.myVar = -1;
+  //   }
   // }
 
   render() {
-    const { array } = this.state;
+    const { array, isRunning , stopArray,isTutorial} = this.state;
     const {
       currentBubbleTwo,
       currentQuickTwo,
@@ -147,18 +256,17 @@ export default class Sortbody extends Component {
       currentMergeX,
     } = this.props;
 
-    const numWidth = Math.floor($(document).width() / (array.length * 3));
+    const numWidth = Math.floor($(document).width() / (array.length * 2));
     const width = `${numWidth}px`;
-    // const numMargin = array.length < 5 ?
-    //   10 : array.length < 8 ?
-    //     8 : array.length < 11 ?
-    //       6 : array.length < 20 ?
-    //         4 : array.length < 50 ?
-    //           3.5 : array.length < 100 ?
-    //             3 : array.length < 130 ?
-    //               2.5 : 2;
-    // const margin = `${numMargin}px`;
-    const margin = "2px";
+    const numMargin = array.length < 5 ?
+      12 : array.length < 8 ?
+        10 : array.length < 11 ?
+          8 : array.length < 20 ?
+            6 : array.length < 50 ?
+              4 : array.length < 100 ?
+                3 : array.length < 130 ?
+                  2.5 : 2;
+    const margin = `${numMargin}px`;
     const color = numWidth > 20 ? "white" : "transparent";
     // const numFont = numWidth > 70 ?
     //   20 : numWidth > 60 ?
@@ -214,42 +322,42 @@ export default class Sortbody extends Component {
           onTutorialChange={() => {
             this.isTutorial();
           }}
-          handleSizeChange = {(val)=> this.changeArraySize(val)}
-          handleSpeedChange = {(val)=> this.changeAnimationSpeed(val)}
+          handleSizeChange={(val) => this.changeArraySize(val)}
+          handleSpeedChange={(val) => this.changeAnimationSpeed(val)}
+          isrunning={isRunning}
+          istutorial={isTutorial}
+          // onStop = {()=>this.Stop()}
           // onPause = {()=>this.Pause()}
           // onPlay = {()=>this.Play()}
         />
-        {/* <button onClick={this.resetArray.bind(this)}>generate new array</button> */}
-        {/* <button onClick={this.TestSort.bind(this)}>Test sort</button>
-        <button onClick={this.BubbleSort.bind(this)}>Bubble sort</button>
-        <button onClick={this.QuickSort.bind(this)}>Quick sort</button>
-        <button onClick={this.MergeSort.bind(this)}>Merge sort</button>
-        <button onClick={this.InsertSort.bind(this)}>Insert sort</button>
-        <button onClick={this.HeapSort.bind(this)}>Heap sort</button> */}
+        {/* <button onClick={this.Stop.bind(this)}>Stop </button> */}
+        
+        {/* <button onClick={() => instance.postMessage(5)}>Send Message</button> */}
         <div id="bodyContainer">
-          <div id="captions">i am captions</div>
+          <div id="captions" style={{display:'none', backgroundColor: 'rgba(131, 150, 182, 0.22)'}}>i am captions </div>
           <div className="bars-div">
             {array.map((value, idx) => (
               <div className="eachBarDiv" key={idx}>
-              <div
-                className="arrayElement"
-                key={idx}
-                style={{
-                  height: `${value}px`,
-                  marginLeft: "2px",
-                  marginRight: "2px",
-                  width: "10px",
-                  backgroundColor: "blue",
-                  fontSize: "5px",
-                }}
-              >
-                <p className="text">
-                </p>
-              </div>
+                <div
+                  className="arrayElement bars-slide-anmimation"
+                  key={idx}
+                  style={{
+                    height: `${value}px`,
+                    marginLeft: margin,
+                    marginRight: margin,
+                    width: width,
+                    fontSize: "5px",
+                  }}
+                >
+                  <p className="text"></p>
+                </div>
               </div>
             ))}
           </div>
         </div>
+        {/* <Helmet>
+          <script src="../StyleJS/animation.js"></script>
+        </Helmet> */}
       </>
     );
   }

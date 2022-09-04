@@ -1,27 +1,404 @@
-.row{
-    height: 25px;
-    display: flex;
-    width: 100%;
+.row1 {
+  display: flex;
+  width: 100%;
 }
 
-.gridbox{
-    height: max-content;
-    min-width: 1200px;
-    border: 5px solid rgb(84, 7, 142);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.gridbox1 {
+  margin: 1em 2em;
+  /* height: calc(100vh - 300px); */
+  min-width: 1200px;
+  /* border: 2px solid rgb(84, 7, 142); */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* background-color:rgba(191, 174, 245, 0.747); */
+  /* background: linear-gradient(58deg,#a16bfe,#ba6ebd); */
+  /* background: linear-gradient(-45deg,#321F6E,#4E196B,#1D356B);
+  background-size: 400% 400%; */
+  /* animation: gradient-animation 15s ease infinite; */
 }
 
-#captions{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50px;
-    width: 100%;
-    background-color: black;
-    color: antiquewhite;
-    margin-bottom: 10px;
-    margin-top: 10px;
+.gradient-background {
+  background: linear-gradient(300deg,#a16bfe,#deb0df);
+  background-size: 120% 120%;
+  animation: gradient-animation 2s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
   }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#captions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  background-color: black;
+  color: antiquewhite;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.path-header {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.path-other-btns {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.path-animation-slider {
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5em 2em;
+  background-color: rgba(255,255,255,0.15);
+}
+
+.path-grid-other-btns {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* .grid-other-btns{
+    flex: 1;
+} */
+
+.path-tutorial {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.path-tutorial::before {
+  content: 'Tutorial';
+  font-family: "IBM Plex Sans", sans-serif;
+  color: rgb(236, 236, 236);
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0.7rem;
+}
+
+
+ /**************Tutorial button*********/
+
+.tutorial-btn2 {
+  display: inline-block;
+  padding: 0.9rem 1.8rem;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  border: 3px solid #321f6e !important;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent !important;
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 1;
+  font-family: inherit;
+ }
+ 
+ .tutorial-btn2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #321f6e;
+  transform: translateX(-100%);
+  transition: all .3s;
+  z-index: -1;
+ }
+ 
+ .tutorial-btn2:hover::before {
+  transform: translateX(0);
+ }
+
+ /**************Tutorial button*********/
+
+
+
+ /**************Tutorial button arrow*********/
+
+.tutorial-btn2-arrow{
+  display: inline-block;
+  padding: 0.9rem 1.8rem;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+  border: 3px solid #321f6e !important;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent !important;
+  text-decoration: none;
+  overflow: hidden;
+  z-index: 1;
+  font-family: inherit;
+ }
+ 
+ .tutorial-btn2-arrow::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #321f6e;
+  transform: translatey(-100%);
+  transition: all .3s;
+  z-index: -1;
+ }
+ 
+ .tutorial-btn2-arrow::before {
+  transform: translateY(0);
+ }
+
+/**************Tutorial button arrow*********/
+
+
+/**************Tutorial button menu*********/
+
+#split-button-menu-2{
+  background-color: #321f6e !important;
+}
+
+#split-button-menu-2 * {
+  font-size: 0.8em;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 2px;
+  position: relative;
+  color: #170e35 !important;
+  text-decoration: none;
+  transition: 0.3s ease all;
+  z-index: 1;
+ }
+
+#split-button-menu-2 *:before {
+  transition: 0.5s all ease !important;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  opacity: 0;
+  content: '';
+  background-color: #170e35 !important;
+  z-index: -1;
+ }
+ 
+ #split-button-menu-2 *:hover, #split-button-menu-2 *:focus {
+  color: white !important;
+ }
+ 
+ #split-button-menu-2 *:hover:before, #split-button-menu-2 *:focus:before {
+  transition: 0.5s all ease !important;
+  left: 0;
+  right: 0;
+  opacity: 1;
+ }
+ 
+ #split-button-menu-2 *:active {
+  transform: scale(0.9) !important;
+ }
+
+/**************Tutorial button menu*********/
+
+.path-gird-main-btns {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-sizing: unset !important;
+}
+
+.path-gird-main-btns::before {
+  content: 'Visualize';
+  font-family: "IBM Plex Sans", sans-serif;
+  color: rgb(236, 236, 236);
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin: 0 1em;
+}
+
+.gird-main-btns {
+  white-space: nowrap;
+}
+
+
+/********************main buttons***************/
+
+
+
+.gird-main-btns {
+  padding: 10px 30px !important;
+  margin: 0.5em !important;
+  background-color: rgba(0,0,0,0.3) !important;
+  border: none;
+  font-size: 18px;
+  position: relative;
+  transition: 350ms;
+}
+
+.gird-main-btns .box2 {
+  color: rgb(197, 197, 197);
+  position: relative;
+  transition: 350ms;
+  transition-delay: 350ms;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+
+.gird-main-btns:before {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 0%;
+  left: 50%;
+  right: 50%;
+  top: 50%;
+  bottom: 50%;
+  transition: 350ms;
+  transition-delay: 350ms;
+  background-color: #553ca3;
+  /* box-shadow: 0 0 10px red,
+   0 0 30px red, 
+   0 0 50px red; */
+}
+
+.gird-main-btns div {
+  transition: 350ms;
+  position: absolute;
+  background-color: #553ca3;
+  /* box-shadow: 0 0 15px red, 0 0 30px red, 0 0 50px red; */
+}
+
+.gird-main-btns .top {
+  width: 15px;
+  height: 2px;
+  top: 0;
+  left: 0;
+}
+
+.gird-main-btns .bottom {
+  width: 15px;
+  height: 2px;
+  bottom: 0;
+  right: 0;
+}
+
+.gird-main-btns .left {
+  width: 2px;
+  height: 15px;
+  top: 0;
+  left: 0;
+}
+
+.gird-main-btns .right {
+  width: 2px;
+  height: 15px;
+  bottom: 0;
+  right: 0;
+}
+
+.gird-main-btns:hover {
+  color: #000;
+}
+
+/* .gird-main-btns:hover .box2 {
+  color: #000;
+}
+
+.gird-main-btns:hover:before {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.gird-main-btns:hover .top, 
+.gird-main-btns:hover .bottom {
+  width: 100%;
+}
+
+.gird-main-btns:hover .left,
+.gird-main-btns:hover .right {
+  height: 100%;
+} */
+
+/********************main buttons***************/
+
+
+/********************other buttons***************/
+
+.grid-other-btns {
+  background: rgba(165, 139, 243, 0.6) !important;
+  border: none;
+  padding: 5px 15px !important;
+  display: inline-block;
+  font-size: 0.8rem !important;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+  transform: skew(-21deg);
+}
+
+.grid-other-btns span {
+  display: inline-block;
+  color: #000;;
+  transform: skew(21deg);
+}
+
+.grid-other-btns::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 100%;
+  left: 0;
+  background: #1C172C !important;
+  opacity: 0 !important;
+  z-index: -1;
+  transition: all 0.5s;
+}
+/* 
+.grid-other-btns:hover span{
+  color: #fff !important;
+}
+
+.grid-other-btns:hover::before {
+  left: 0;
+  right: 0;
+  opacity: 1 !important;
+} */
+
+/********************other buttons***************/
