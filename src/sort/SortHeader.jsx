@@ -29,6 +29,7 @@ import HeapSortTutorial from "../SortingTutorials/HeapSortTutorial";
 import InsertSortTutorial from "../SortingTutorials/InsertSortTutorial";
 import MergeSortTutorial from "../SortingTutorials/MergeSortTutorial";
 
+
 const theme = createTheme({
   palette: {
     slidercolor: {

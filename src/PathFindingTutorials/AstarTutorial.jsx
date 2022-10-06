@@ -37,7 +37,7 @@ export default class AstarTutorial extends Component {
           <Carousel.Item className="carousel-item">
             <CardHeader>
               <div className="color-black astar-child-1">
-                <h2>What is Astar Algorithm?</h2>
+                <h2 id="h2">What is Astar Algorithm?</h2>
                 <ul>
                   <li>
                     Astar algorithm is a searching algorithm that searches for
@@ -99,7 +99,7 @@ export default class AstarTutorial extends Component {
           <Carousel.Item className="carousel-item">
             <CardHeader>
               <div className="astar-child-3 color-black">
-                <h5>Working of the Astar algorithm </h5>
+                <h2 id="h2">Working of the Astar algorithm </h2>
                 <img className="astar-img-3" src={image3} alt="First slide" />
                 Here, we have two nodes one is start node which is in green and
                 other one is end node which is in red color.<br></br>

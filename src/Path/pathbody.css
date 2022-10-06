@@ -3,50 +3,22 @@
   width: 100%;
 }
 
-.gridbox1 {
+/* .gridbox1 {
   margin: 1em 2em;
-  /* height: calc(100vh - 300px); */
   min-width: 1200px;
-  /* border: 2px solid rgb(84, 7, 142); */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* background-color:rgba(191, 174, 245, 0.747); */
-  /* background: linear-gradient(58deg,#a16bfe,#ba6ebd); */
-  /* background: linear-gradient(-45deg,#321F6E,#4E196B,#1D356B);
-  background-size: 400% 400%; */
-  /* animation: gradient-animation 15s ease infinite; */
-}
-
-.gradient-background {
-  background: linear-gradient(300deg,#a16bfe,#deb0df);
-  background-size: 120% 120%;
-  animation: gradient-animation 2s ease infinite;
-}
-
-@keyframes gradient-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-#captions {
+} */
+.gridbox1{
+  height: max-content;
+  min-width: 1200px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 50px;
-  width: 100%;
-  background-color: black;
-  color: antiquewhite;
-  margin-bottom: 10px;
-  margin-top: 10px;
+  flex-direction: column;
+  margin: 1em 2em;
 }
 
 .path-header {
@@ -288,9 +260,6 @@
   transition: 350ms;
   transition-delay: 350ms;
   background-color: #553ca3;
-  /* box-shadow: 0 0 10px red,
-   0 0 30px red, 
-   0 0 50px red; */
 }
 
 .gird-main-btns div {
@@ -332,7 +301,7 @@
   color: #000;
 }
 
-/* .gird-main-btns:hover .box2 {
+.gird-main-btns:hover .box2 {
   color: #000;
 }
 
@@ -353,7 +322,7 @@
 .gird-main-btns:hover .left,
 .gird-main-btns:hover .right {
   height: 100%;
-} */
+}
 
 /********************main buttons***************/
 
@@ -390,7 +359,7 @@
   z-index: -1;
   transition: all 0.5s;
 }
-/* 
+
 .grid-other-btns:hover span{
   color: #fff !important;
 }
@@ -399,6 +368,6 @@
   left: 0;
   right: 0;
   opacity: 1 !important;
-} */
+}
 
 /********************other buttons***************/

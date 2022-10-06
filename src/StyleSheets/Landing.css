@@ -11,6 +11,13 @@ body {
     margin: 0
 }
 
+.features-img{
+    width: 70%;
+    aspect-ratio: 1/0.7;
+    border: 2px solid #0d2b6b ;
+    padding: 0.5em;
+}
+
 rect{
     fill: transparent;
 }
@@ -1401,6 +1408,10 @@ label {
 .hero-figure svg {
     width: 100%;
     height: auto
+}
+
+.hero-paragraph{
+    font-size: 1.2em;
 }
 
 .hero-figure::before,

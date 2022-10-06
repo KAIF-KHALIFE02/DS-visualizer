@@ -50,8 +50,8 @@ function compare(bar1, bar2, speed) {
   if (speed >= 500) {
     document.getElementById("captions").innerText =
       "Searching for bar1 greater than bar2";
-    bar1.classList.add('compare')
-    bar2.classList.add('compare')
+      bar1.childNodes[0].innerText = "bar1";
+      bar2.childNodes[0].innerText = "bar2";
   }
   bar1.classList.remove('isgreater');
   bar2.classList.remove('isgreater');

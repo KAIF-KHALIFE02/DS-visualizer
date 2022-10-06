@@ -7,7 +7,6 @@ export default class Nodes extends Component {
 shouldComponentUpdate(nextProps){
   if(nextProps.iswall !== this.props.iswall) return true
   if(nextProps.isvisited !== this.props.isvisited) return true
-  // if(nextProps.mazevisited !== this.props.mazevisited) return true
   if(nextProps.isstart !== this.props.isstart ) return true
   if(nextProps.isfinish !== this.props.isfinish) return true
   if(nextProps.ispath !== this.props.ispath) return true

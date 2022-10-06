@@ -90,7 +90,7 @@
 }
 
 .insert-list li{
-    font-size: 0.85em;
+    /* font-size: 0.85em; */
 }
 
 .heap-list-1 li{
@@ -163,6 +163,12 @@ h1,h2,h3,h4,h5,h6{
     font-family: "IBM Plex Sans", sans-serif;
 }
 
+#h2{
+    font-size: clamp(25px,2vh,2em);
+    margin:0;
+    margin-top: 1.5vh;
+}
+
 .color-black{
     color: rgba(0, 0, 0, 0.7);
 }
@@ -182,14 +188,21 @@ h1,h2,h3,h4,h5,h6{
 
 /****************child divs*********************/
 
-.astar-child-1 ul li{
-    font-size: 0.8em;
+/* div,ul{
+    font-size: 10px;
+} */
+
+div,ul{
+    font-size: clamp(12px,1.5vh,0.8rem);
 }
+
+/* .astar-child-1 ul li{
+    font-size: 1.5vh;
+} */
 
 .astar-child-2{
     width: 100%;
     display: flex;
-    font-size: 0.8em;
 }
 
 .astar-child-4, .bfs-child-3, .bi-child-3{
@@ -200,9 +213,9 @@ h1,h2,h3,h4,h5,h6{
     padding: 0.5em;
 }
 
-.bfs-child-1, .bfs-child-1 ul li,.dfs-child-2 , .dfs-child-2 ul li{
+/* .bfs-child-1, .bfs-child-1 ul li,.dfs-child-2 , .dfs-child-2 ul li{
     font-size: 0.9em;
-}
+} */
 
 /****************child divs*********************/
 
@@ -215,6 +228,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .astar-img-div-1 *, .dijkstra-img-div-2 *, .bfs-img-div-2 *, .bfs-img-div-2 *,.bi-img-div-2 *{
+    font-size: clamp(12px,1.5vh,0.8rem);
     padding:  0.5em;
 }
 
@@ -228,15 +242,20 @@ h1,h2,h3,h4,h5,h6{
 /********************images**********************/
 
 .astar-img-1{
-    width: 10vw;
-    margin-top: 0.5em;
+    /* width: minmax(15vh,10vw); */
+    min-width: 16vh;
+    max-width: 18vh;
+    margin: 0.5em;
 }
 .astar-img-2{
-    width: 10vw;
+    /* width: minmax(15vh,10vw); */
+    min-width: 16vh;
+    max-width: 18vh;
     padding: 0.5em;
 }
 .astar-img-3{
-    width: 17.5vw;
+    /* width: 17.5vw; */
+    width: clamp(30vh,25vh,40vh); 
     padding: 0.5em;
 }
 
@@ -245,8 +264,15 @@ h1,h2,h3,h4,h5,h6{
     padding: 1em;
 }
 
+.dijkstra-img-1{
+    margin-top: 3vh;
+    min-width: 80vh;
+    max-width: 90vh;
+}
+
 .dijkstra-img-2{
-    width: 20vw;
+    min-width: 30vh;
+    max-width: 20vw;
     padding: 0.5em;
 }
 
@@ -259,7 +285,8 @@ h1,h2,h3,h4,h5,h6{
     width: 18vw;
 }
 .bfs-img-2{
-    width: 12vw;
+    min-width: 15vh;
+    max-width: 10vw;
     padding:0.5em;
 }
 .bfs-img-3{
@@ -271,15 +298,33 @@ h1,h2,h3,h4,h5,h6{
     width: 15vw;
 }
 .dfs-img-2{
-    width: 10vw;
+    min-width: 13vh;
+    max-width: 8vw;
 }
+.dfs-img-3{
+    padding: 0.5em;
+    min-width: 20vh;
+    max-width: 15vw;
+}
+.bi-img-1{
+    min-width: 60vh;
+    max-width: 35vw;
+}
+
 .bi-img-2{
-    width: 12vw;
+    min-width: 20vh;
+    max-width: 12vw;
+    padding: 0.5em;
+}
+.bi-img-2-1{
+    min-width: 20vh;
+    max-width: 12vw;
     padding: 0.5em;
 }
 
 .bi-img-3{
-    width: 25vw;
+    min-width: 25vh;
+    max-width: 20vw;
     padding: 1em;
 }
 
@@ -294,7 +339,7 @@ h1,h2,h3,h4,h5,h6{
 }
 .astar-video, .dijkstra-video, .bfs-video, .dfs-video, .bi-video{
     width: 100%;
-    padding: 2em 4em;
+    padding: 3% 6%;
 }
 
 /********************videos*************************/

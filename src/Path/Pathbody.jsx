@@ -5,11 +5,11 @@ import * as astar from "./Astar.js";
 import * as bfs from "./BFS.js";
 import * as dfs from "./DFS.js";
 import * as bdd from "./BiDirectionalDijkstra";
-import * as dijkstraNA from "./Functions without animations/Dijkstra.js";
-import * as astarNA from "./Functions without animations/Astar.js";
-import * as bfsNA from "./Functions without animations/BFS.js";
-import * as dfsNA from "./Functions without animations/DFS.js";
-import * as bddNA from "./Functions without animations/BiDirectionalDijkstra.js";
+// import * as dijkstraNA from "./Functions without animations/Dijkstra.js";
+// import * as astarNA from "./Functions without animations/Astar.js";
+// import * as bfsNA from "./Functions without animations/BFS.js";
+// import * as dfsNA from "./Functions without animations/DFS.js";
+// import * as bddNA from "./Functions without animations/BiDirectionalDijkstra.js";
 import "./pathbody.css";
 import * as Randomdsf from "../Maze/Random-DFS";
 import * as RecursiveDivision from "../Maze/RecursiveDivision";
@@ -34,7 +34,7 @@ import DFSTutorial from "../PathFindingTutorials/DFSTutorial";
 import BFSTutorial from "../PathFindingTutorials/BFSTutorial";
 import BiDijkstraTutorial from "../PathFindingTutorials/BiDijkstraTutorial";
 
-let instance = new WorkerBuilder(Worker);
+// let instance = new WorkerBuilder(Worker);
 
 const theme = createTheme({
   palette: {
@@ -60,7 +60,7 @@ const style = {
   isRunning: false,
 };
 
-let rows = 23;
+let rows = 27;
 let columns = 45;
 // let startrow = 9;
 // let startcol = 10;

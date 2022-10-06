@@ -2,6 +2,9 @@ import React from "react";
 import "../StyleSheets/Landing.css";
 import Navbar from "./Navbar";
 import { Helmet } from "react-helmet";
+import sortimg from '../Header/SortingFeature.png';
+import pathimg from '../Header/PathFeature.png';
+import compare from '../Header/CompareFeature.jpg';
 // import '../StyleJS/main.min.js'
 
 export default function Blankurl() {
@@ -18,20 +21,20 @@ export default function Blankurl() {
             <div className="hero-inner">
               <div className="hero-copy">
                 <h1 className="hero-title mt-0">
-                  Landing template for startups
+                  Data Structures Visualizer
                 </h1>
                 <p className="hero-paragraph">
-                  Our landing page template works on all devices, so you only
-                  have to set it up once, and get beautiful results forever.
+                  This website is comprised of visualization of <b>Sorting</b> and <b>Path Finding</b> algorithms. It will help 
+                  in learning algorithms in much more efficient way.
                 </p>
-                <div className="hero-cta">
+                {/* <div className="hero-cta">
                   <a className="button button-primary" href="#">
                     Pre order now
                   </a>
                   <a className="button" href="#">
                     Get in touch
                   </a>
-                </div>
+                </div> */}
               </div>
               <div className="hero-figure anime-element">
                 <svg
@@ -89,7 +92,8 @@ export default function Blankurl() {
                   <div className="feature-inner">
                     <div className="feature-icon">
                       <img
-                        src="dist/images/feature-icon-01.svg"
+                      className="features-img"
+                        src={sortimg}
                         alt="Feature 01"
                       />
                     </div>
@@ -106,7 +110,8 @@ export default function Blankurl() {
                   <div className="feature-inner">
                     <div className="feature-icon">
                       <img
-                        src="dist/images/feature-icon-02.svg"
+                        className="features-img"
+                        src={pathimg}
                         alt="Feature 02"
                       />
                     </div>
@@ -123,59 +128,9 @@ export default function Blankurl() {
                   <div className="feature-inner">
                     <div className="feature-icon">
                       <img
-                        src="dist/images/feature-icon-03.svg"
+                        className="features-img"
+                        src={compare}
                         alt="Feature 03"
-                      />
-                    </div>
-                    <h4 className="feature-title mt-24">Be Productive</h4>
-                    <p className="text-sm mb-0">
-                      Fermentum posuere urna nec tincidunt praesent semper
-                      feugiat nibh. A arcu cursus vitae congue mauris. Nam at
-                      lectus urna duis convallis. Mauris rhoncus aenean vel elit
-                      scelerisque mauris.
-                    </p>
-                  </div>
-                </div>
-                <div className="feature text-center is-revealing">
-                  <div className="feature-inner">
-                    <div className="feature-icon">
-                      <img
-                        src="dist/images/feature-icon-04.svg"
-                        alt="Feature 04"
-                      />
-                    </div>
-                    <h4 className="feature-title mt-24">Be Productive</h4>
-                    <p className="text-sm mb-0">
-                      Fermentum posuere urna nec tincidunt praesent semper
-                      feugiat nibh. A arcu cursus vitae congue mauris. Nam at
-                      lectus urna duis convallis. Mauris rhoncus aenean vel elit
-                      scelerisque mauris.
-                    </p>
-                  </div>
-                </div>
-                <div className="feature text-center is-revealing">
-                  <div className="feature-inner">
-                    <div className="feature-icon">
-                      <img
-                        src="dist/images/feature-icon-05.svg"
-                        alt="Feature 05"
-                      />
-                    </div>
-                    <h4 className="feature-title mt-24">Be Productive</h4>
-                    <p className="text-sm mb-0">
-                      Fermentum posuere urna nec tincidunt praesent semper
-                      feugiat nibh. A arcu cursus vitae congue mauris. Nam at
-                      lectus urna duis convallis. Mauris rhoncus aenean vel elit
-                      scelerisque mauris.
-                    </p>
-                  </div>
-                </div>
-                <div className="feature text-center is-revealing">
-                  <div className="feature-inner">
-                    <div className="feature-icon">
-                      <img
-                        src="dist/images/feature-icon-06.svg"
-                        alt="Feature 06"
                       />
                     </div>
                     <h4 className="feature-title mt-24">Be Productive</h4>
@@ -192,7 +147,7 @@ export default function Blankurl() {
           </div>
         </section>
 
-        <section className="pricing section">
+        {/* <section className="pricing section">
           <div className="container-sm">
             <div className="pricing-inner section-inner">
               <div className="pricing-header text-center">
@@ -267,7 +222,7 @@ export default function Blankurl() {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
     </>
   );

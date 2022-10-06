@@ -26,6 +26,7 @@ export async function dijkstra(nodes,startNode,endNode,grid,nodesState,speed){
 
 function colorNeighbour(node,speed){
     node.isVisited = true
+    // gridnode.classList.add('node-visited')
     return new Promise(resolve => setTimeout(resolve,speed))
 }
 

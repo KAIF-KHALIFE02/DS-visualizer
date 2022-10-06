@@ -7,8 +7,9 @@
   -o-background-size: cover;
   background-size: cover;
   text-align: center;
-  backdrop-filter: blur(5px);
   z-index: -1;
+  padding-bottom: 2em;
+  overflow-y: hidden;
 }
 
 .bars-div {
@@ -89,13 +90,18 @@
 
 
 .arrayElement .text {
-  font-size: 15px;
-  height: 16px;
-  background-color: rgba(255, 255, 255, 0.5);
+  box-sizing: unset;
+  font-size: 16px;
+  height: 20px;
+  padding: 5px 0;
+  text-align: center;
+  color: #fff;
+  /* background-color: #122726; */
   font-weight: bold;
   position: relative;
-  top: -40px;
+  top: -44px;
   z-index: 1;
+  text-transform: capitalize;
 }
 
 #captions {
@@ -197,11 +203,13 @@
 }
 
 .isgreater {
-  background-color: rgba(0, 247, 255, 0.1);
-  border: 2px solid rgba(0, 247, 255, 0.2);
+  background-color: rgba(255, 0, 0, 0.795);
+  border: 2px solid rgba(0, 255, 55, 0.2);
 }
 
 .sorted {
-  background-color: rgba(40, 145, 127, 0.1);
-  border: 2px solid rgba(40, 145, 127, 0.2);
+  background-color: rgba(0, 247, 255, 0.1);
+  border: 2px solid rgba(0, 247, 255, 0.2);
+  /* background-color: rgba(40, 145, 127, 0.1);
+  border: 2px solid rgba(40, 145, 127, 0.2); */
 }

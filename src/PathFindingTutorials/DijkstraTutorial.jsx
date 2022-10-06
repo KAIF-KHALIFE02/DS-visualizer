@@ -32,7 +32,7 @@ export default class DijkstraTutorial extends Component {
           <Carousel.Item className="carousel-item">
             <CardHeader>
               <div className="dijkstra-child-1 color-black">
-                <h2>What is Dijkstra Algorithm</h2>
+                <h2 id="h2">What is Dijkstra Algorithm</h2>
                 Dijkstra's algorithm allows us to find the shortest path between
                 any two vertices of a graph. Where we need to find a shortest
                 path from a given source to all other vertices. Also ,this
@@ -54,7 +54,7 @@ export default class DijkstraTutorial extends Component {
           <Carousel.Item className="carousel-item">
             <CardHeader>
               <div className="dijkstra-child-2 color-black">
-                <h4>Working of Dijkstra algorithm</h4>
+                <h2 id="h2">Working of Dijkstra algorithm</h2>
                 <img
                   className="dijkstra-img-2"
                   src={image2}

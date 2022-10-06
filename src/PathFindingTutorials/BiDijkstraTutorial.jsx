@@ -33,7 +33,7 @@ export default class BiDijkstraTutorial extends Component {
           <Carousel.Item className="carousel-item">
             <CardHeader>
               <div className='bi-child-1 color-black'>
-                <h4>What is Bi-Dijkstra Algorithm</h4>
+                <h2 id="h2">What is Bi-Dijkstra Algorithm</h2>
                 <ul>
                   <li>
                     Bi-Dijkstra's algorithm allows us to find the shortest path
@@ -67,8 +67,8 @@ export default class BiDijkstraTutorial extends Component {
           <Carousel.Item className="carousel-item">
             <CardHeader>
               <div className='color-black bi-child-2'>
-                <h4>Working of Bi-Dijkstra algorithm</h4>
-                <img cclassName="bi-img-2" src={image2} alt="First slide" />
+                <h2 id="h2">Working of Bi-Dijkstra algorithm</h2>
+                <img className="bi-img-2" src={image2} alt="First slide" />
                 Here, we have two nodes one is start node which is in green and
                 other one is end node which is in red color.<br></br>
                 <div className="bi-img-div-2">
@@ -92,7 +92,7 @@ export default class BiDijkstraTutorial extends Component {
                     as it has a value of zero(0) and it is minimum from other
                     nodes.
                     <img
-                      className="bi-img-2"
+                      className="bi-img-2-1"
                       src={image3}
                       alt="First slide"
                     />
@@ -104,7 +104,7 @@ export default class BiDijkstraTutorial extends Component {
                     it's closest(neighbour node) the distance is incremented by
                     one(1) at a same time.
                     <img
-                      className="bi-img-2"
+                      className="bi-img-2-1"
                       src={image4}
                       alt="First slide"
                     />

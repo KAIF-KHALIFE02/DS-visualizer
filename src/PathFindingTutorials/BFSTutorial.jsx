@@ -33,7 +33,7 @@ export default class BFSTutorial extends Component {
           <Carousel.Item className="carousel-item">
             <CardHeader>
               <div className="bfs-child-1 color-black">
-                <h2>What is BFS?</h2>
+                <h2 id="h2">What is BFS?</h2>
                 <ul>
                   <li>
                     Breadth-first search is a graph traversal algorithm that
@@ -74,7 +74,7 @@ export default class BFSTutorial extends Component {
           <Carousel.Item className="carousel-item">
             <CardHeader>
               <div className="color-black bfs-child-2">
-                <h5>Working of BFS</h5>
+                <h2 id="h2">Working of BFS</h2>
                 <img className="bfs-img-2" src={image2} alt="First slide" />
                 Here, we have two nodes one is start node which is in green and
                 other one is end node which is in red color.

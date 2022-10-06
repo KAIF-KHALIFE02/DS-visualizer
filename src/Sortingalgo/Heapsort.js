@@ -139,7 +139,7 @@ function highest(num, bar, speed) {
   }
   if (num > 3) {
     document.getElementById("captions").innerText =
-      "Placing the " + num + "th highest element before bar" + (num - 1);
+      "Placing the " + num + "th highest element before bar " + (num - 1);
     bar.childNodes[0].innerText = num;
     return new Promise((resolve) => setTimeout(resolve, speed));
   }

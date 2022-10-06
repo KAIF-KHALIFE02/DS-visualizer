@@ -38,7 +38,7 @@ export default class DFSTutorial extends Component {
           <Carousel.Item className="carousel-item">
             <CardHeader>
               <div className="dfs-child-1 color-black">
-                <h2>What is DFS?</h2>
+                <h2 id="h2">What is DFS?</h2>
                 Depth-first search (DFS) is a recursive algorithm for traversing
                 a tree or graph data structure. It is called as DFS because it
                 starts from the root node and follows each path to its greatest
@@ -74,7 +74,7 @@ export default class DFSTutorial extends Component {
           <Carousel.Item  className="carousel-item">
             <CardHeader>
               <div className="color-black dfs-child-2">
-                <h5>Working of BFS</h5>
+                <h2 id="h2">Working of BFS</h2>
                 <img className="dfs-img-2" src={image9} alt="First slide" />
                 Here, we have two nodes one is start node which is in green and
                 other one is end node which is in red color.<br></br>

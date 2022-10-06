@@ -13,13 +13,16 @@ export default function Navbar() {
           <div className="site-header-inner">
             <div className="brand header-brand">
               <h1 className="m-0">
-                <a href="#">
+                {/* <a href="#"> */}
+                <Link to="/">
                   <img className="header-logo-image" src={logo} alt="Logo" />
-                </a>
+                </Link>
+                {/* </a>? */}
               </h1>
             </div>
             <div className="navigators">
               <Link to="/Sortbody">Sorting</Link>
+              <Link to="/SortCompare">Compare Sort</Link>
               <Link to="/Pathbody">Path Finding</Link>
             </div>
           </div>

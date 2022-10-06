@@ -16,7 +16,7 @@ import Worker from "../worker/worker";
 import WorkerBuilder from "../worker/worker-builder";
 import { Helmet } from "react-helmet";
 import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
-import * as SortingAnimations from '../StyleJS/animation.js'
+import * as SortingAnimations from "../StyleJS/animation.js";
 
 let instance = new WorkerBuilder(Worker);
 
@@ -34,10 +34,14 @@ export default class Sortbody extends Component {
       tutorial: false,
       animationSpeed: 50,
       prevAnimationSpeed: 50,
-      stopArray:false
+      stopArray: false,
     };
     this.changeArraySize = this.changeArraySize.bind(this);
-    this.isTutorial = this.isTutorial.bind(this)
+    this.isTutorial = this.isTutorial.bind(this);
+    // this.myRef = React.createRef();
+    let scrollTo = (ref) => {
+      ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
   }
 
   componentDidMount() {
@@ -47,16 +51,16 @@ export default class Sortbody extends Component {
       }
     };
     this.generateArray();
-    setTimeout(()=>{
+    setTimeout(() => {
       let bars = document.getElementsByClassName("arrayElement");
-      SortingAnimations.animateBarsEntry(bars)
-    },1000)
+      SortingAnimations.animateBarsEntry(bars);
+    }, 1000);
+    window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
   }
-
 
   generateArray() {
     let length1 = this.state.len;
-    console.log(this.state.len)
+    console.log(this.state.len);
     const arr = [];
     const arrWOA = [];
     while (arr.length < length1) {
@@ -75,9 +79,9 @@ export default class Sortbody extends Component {
     let bars = document.getElementsByClassName("arrayElement");
     // let barsBack = document.getElementsByClassName("eachBarDiv");
     for (var j = 0; j < this.state.array.length; j++) {
-      bars[j].classList.remove('compare');
-      bars[j].classList.remove('isgreater');
-      bars[j].classList.remove('sorted');
+      bars[j].classList.remove("compare");
+      bars[j].classList.remove("isgreater");
+      bars[j].classList.remove("sorted");
       // barsBack[j].style.backgroundColor = "";
     }
   }
@@ -97,6 +101,11 @@ export default class Sortbody extends Component {
     // console.log(bar[1].style.height)
   }
 
+  async scroll(){
+    window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
+    return new Promise((resolve) => setTimeout(resolve, 1));
+  }
+
   async BubbleSort(check) {
     // const startMs =
     //   (window.performance.timeOrigin + window.performance.now()) /
@@ -108,6 +117,10 @@ export default class Sortbody extends Component {
     // const endNs = endMs.toString().slice(-5);
     // console.log(startMs);
     // console.log(endMs);
+    // document.querySelector('#bodyContainer').scrollIntoView({
+    //   behavior: 'smooth'
+    // });
+    // $(window).scrollTop($('#bodyContainer').offset().top);
     this.setState({ isRunning: true });
     let bar = document.getElementsByClassName("arrayElement");
     let newArray = this.state.arrayWOA;
@@ -116,13 +129,13 @@ export default class Sortbody extends Component {
       this.state.array,
       bar,
       (arr) => {
-        if(this.state.stopArray){
+        if (this.state.stopArray) {
           this.setState({ array: arr });
         }
       },
       this.state.animationSpeed
     );
-    SortingAnimations.animateBarsSorted(bar)
+    await SortingAnimations.animateBarsSorted(bar);
     this.setState({ isRunning: false });
   }
   async QuickSort() {
@@ -136,7 +149,7 @@ export default class Sortbody extends Component {
       },
       this.state.animationSpeed
     );
-    SortingAnimations.animateBarsSorted(bar)
+    await SortingAnimations.animateBarsSorted(bar);
     this.setState({ isRunning: false });
   }
   async MergeSort() {
@@ -150,7 +163,7 @@ export default class Sortbody extends Component {
       },
       this.state.animationSpeed
     );
-    SortingAnimations.animateBarsSorted(bar)
+    await SortingAnimations.animateBarsSorted(bar);
     this.setState({ isRunning: false });
   }
   async InsertSort() {
@@ -164,7 +177,7 @@ export default class Sortbody extends Component {
       },
       this.state.animationSpeed
     );
-    SortingAnimations.animateBarsSorted(bar)
+    await SortingAnimations.animateBarsSorted(bar);
     this.setState({ isRunning: false });
   }
   async HeapSort() {
@@ -178,7 +191,7 @@ export default class Sortbody extends Component {
       },
       this.state.animationSpeed
     );
-    SortingAnimations.animateBarsSorted(bar)
+    await SortingAnimations.animateBarsSorted(bar);
     this.setState({ isRunning: false });
   }
 
@@ -192,23 +205,37 @@ export default class Sortbody extends Component {
 
   async isTutorial() {
     let checked = String(document.getElementById("tutSwitch").checked);
-    this.setState({ tutorial: checked , prevAnimationSpeed: this.state.animationSpeed,prevLen:this.state.len});
-    let bars = document.getElementsByClassName('arrayElement')
+    this.setState({
+      tutorial: checked,
+      prevAnimationSpeed: this.state.animationSpeed,
+      prevLen: this.state.len,
+    });
+    let bars = document.getElementsByClassName("arrayElement");
     if (checked === "true") {
-      this.setState({ animationSpeed: 500,len:15,isTutorial:true},function(){
-        this.resetArray()
-      });
-      document.getElementById('captions').style.display = 'flex'
+      this.setState(
+        { animationSpeed: 500, len: 15, isTutorial: true },
+        function() {
+          this.resetArray();
+        }
+      );
+      document.getElementById("captions").style.display = "flex";
       // SortingAnimations.barsDisplayNone(bars)
-      SortingAnimations.slideInClass()
-      await SortingAnimations.addBarsEntryAnimation(bars)
+      SortingAnimations.slideInClass();
+      await SortingAnimations.addBarsEntryAnimation(bars);
     } else {
-      this.setState({ animationSpeed: this.state.prevAnimationSpeed,len: this.state.prevLen,isTutorial: false },function(){
-        this.resetArray()
-      });
+      this.setState(
+        {
+          animationSpeed: this.state.prevAnimationSpeed,
+          len: this.state.prevLen,
+          isTutorial: false,
+        },
+        function() {
+          this.resetArray();
+        }
+      );
       // SortingAnimations.barsDisplayNone(bars)
-      SortingAnimations.slideOutClass()
-      await SortingAnimations.addBarsEntryAnimation(bars)
+      SortingAnimations.slideOutClass();
+      await SortingAnimations.addBarsEntryAnimation(bars);
       // document.getElementById('captions').style.display = 'none'
     }
   }
@@ -230,8 +257,7 @@ export default class Sortbody extends Component {
   }
 
   Stop() {
-    this.setState({stopArray: true})
-    
+    this.setState({ stopArray: true });
   }
   // Pause(){
   //   console.log('pausing')
@@ -245,58 +271,31 @@ export default class Sortbody extends Component {
   // }
 
   render() {
-    const { array, isRunning , stopArray,isTutorial} = this.state;
-    const {
-      currentBubbleTwo,
-      currentQuickTwo,
-      pivot,
-      currentSwappers,
-      currentHeapThree,
-      currentSorted,
-      currentMergeX,
-    } = this.props;
+    const { array, isRunning, stopArray, isTutorial } = this.state;
 
-    const numWidth = Math.floor($(document).width() / (array.length * 2));
+    const numWidth = Math.floor($(document).width() / (array.length * 2.5));
     const width = `${numWidth}px`;
-    const numMargin = array.length < 5 ?
-      12 : array.length < 8 ?
-        10 : array.length < 11 ?
-          8 : array.length < 20 ?
-            6 : array.length < 50 ?
-              4 : array.length < 100 ?
-                3 : array.length < 130 ?
-                  2.5 : 2;
+    const numMargin =
+      array.length < 5
+        ? 12
+        : array.length < 8
+        ? 10
+        : array.length < 11
+        ? 8
+        : array.length < 20
+        ? 6
+        : array.length < 50
+        ? 4
+        : array.length < 100
+        ? 3
+        : array.length < 130
+        ? 2.5
+        : 2;
     const margin = `${numMargin}px`;
     const color = numWidth > 20 ? "white" : "transparent";
-    // const numFont = numWidth > 70 ?
-    //   20 : numWidth > 60 ?
-    //     18 : numWidth > 50 ?
-    //       16 : numWidth > 40 ?
-    //         14 : numWidth > 30 ?
-    //           12 : numWidth > 20 ?
-    //             10 : 8;
-    // const fontSize = `${numFont}px`
     const fontSize = "8px";
     return (
       <>
-        {/* <div id="bodyContainer">
-        { array.length ? array.map((number, index) => {
-          const backgroundColor = currentSwappers.includes(index) ?
-              "rgba(219, 57, 57, 0.8)" : currentBubbleTwo.includes(index) ||
-              currentQuickTwo.includes(index) || currentHeapThree.includes(index) ||
-              currentMergeX.includes(index) ?
-                "rgba(78, 216, 96, 0.8)" : pivot === index ?
-                  "rgba(237, 234, 59, 0.8)" : currentSorted.includes(index) ?
-                    "rgba(169, 92, 232, 0.8)" : "rgba(66, 134, 244, 0.8)";
-          return <div
-            className="arrayElement"
-            key={index}
-            style={{height: `${number * 3}px`, width: width, marginLeft: margin, marginRigh: margin, backgroundColor: backgroundColor, color: color, fontSize: fontSize}}
-            {number}
-          </div>
-        }) : null
-        }
-      </div> */}
         <SortHeader
           onResetArray={() => {
             this.resetArray();
@@ -331,10 +330,18 @@ export default class Sortbody extends Component {
           // onPlay = {()=>this.Play()}
         />
         {/* <button onClick={this.Stop.bind(this)}>Stop </button> */}
-        
+
         {/* <button onClick={() => instance.postMessage(5)}>Send Message</button> */}
-        <div id="bodyContainer">
-          <div id="captions" style={{display:'none', backgroundColor: 'rgba(131, 150, 182, 0.22)'}}>i am captions </div>
+        <div id="bodyContainer" ref={this.scrollTo}>
+          <div
+            id="captions"
+            style={{
+              display: "none",
+              backgroundColor: "rgba(131, 150, 182, 0.22)",
+            }}
+          >
+            i am captions{" "}
+          </div>
           <div className="bars-div">
             {array.map((value, idx) => (
               <div className="eachBarDiv" key={idx}>
@@ -355,9 +362,6 @@ export default class Sortbody extends Component {
             ))}
           </div>
         </div>
-        {/* <Helmet>
-          <script src="../StyleJS/animation.js"></script>
-        </Helmet> */}
       </>
     );
   }
