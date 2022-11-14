@@ -460,6 +460,9 @@ export default class SortHeader extends Component {
                 />
               </FormGroup>
             </div>
+            <div>
+              <button id="stop-btn" onClick={()=> window.location.reload()}>Stop</button>
+            </div>
           </div>
         </div>
       </div>

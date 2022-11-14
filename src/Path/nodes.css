@@ -104,7 +104,7 @@
 .node-path {
   -webkit-animation: scale-out-center 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
   animation: scale-out-center 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-  background-color: transparent;
+  
 }
 
 @-webkit-keyframes scale-out-center {
@@ -113,11 +113,11 @@
     transform: scale(1);
     opacity: 1;
   }
-
   100% {
     -webkit-transform: scale(0);
     transform: scale(0);
     opacity: 1;
+    background-color: transparent;
   }
 }
 

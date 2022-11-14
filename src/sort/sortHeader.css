@@ -193,7 +193,7 @@
   transform: translateY(0);
  }
 
-/**************Tutorial button arrow*********/
+/**************Tutorial button arrow*********/font-fa
 
 /**************tutorial button menu ********/
 
@@ -283,3 +283,18 @@
 }
 
 /******************Modal********************/
+
+#stop-btn{
+  padding:0.5em 1em;
+  background-color: #8d212a;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 800;
+  font-size: 1.5em;
+  border-radius: 20%;
+}
+
+#stop-btn:hover ,#stop-btn:focus{
+  transition: 0.5s all ease !important;
+  background-color: #000;
+  color: #8d212a;
+}

@@ -355,7 +355,7 @@ export default class Pathbody extends Component {
 
   colorShortestPath(node) {
     node.isPath = true;
-    return new Promise((resolve) => setTimeout(resolve, 500));
+    return new Promise((resolve) => setTimeout(resolve, 200));
   }
 
   randomMaze() {
@@ -517,6 +517,13 @@ export default class Pathbody extends Component {
                 onClick={this.randomMaze.bind(this)}
               >
                 <span>Random Walls</span>
+              </button>
+              <button
+                className="grid-other-btns"
+                disabled={!isRunning}
+                onClick={()=>window.location.reload()}
+              >
+                <span>Stop</span>
               </button>
             </div>
             <div className="path-tutorial">
