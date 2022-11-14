@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "6d7095d0ba901e42a470",
-    "url": "/DS-visualizer/static/css/main.5552cef1.chunk.css"
+    "revision": "efb5f42313e47b5b625b",
+    "url": "/DS-visualizer/static/css/main.079cbbe0.chunk.css"
   },
   {
-    "revision": "6d7095d0ba901e42a470",
-    "url": "/DS-visualizer/static/js/main.6d7095d0.chunk.js"
+    "revision": "efb5f42313e47b5b625b",
+    "url": "/DS-visualizer/static/js/main.efb5f423.chunk.js"
   },
   {
     "revision": "62f30f8224fbacb982ca",
@@ -236,7 +236,7 @@ self.__precacheManifest = [
     "url": "/DS-visualizer/static/media/Astar2.4981c4f3.png"
   },
   {
-    "revision": "a9b9fc53716a37bc7033ebada8d812ed",
+    "revision": "76c3e3222ac2f20694200ea2519e0cf5",
     "url": "/DS-visualizer/index.html"
   }
 ];
