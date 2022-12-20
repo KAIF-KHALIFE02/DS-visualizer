@@ -36,12 +36,12 @@ self.__precacheManifest = [
     "url": "/DS-visualizer/static/media/hero-top-illustration.aa0f14cb.svg"
   },
   {
-    "revision": "85e2808ae2a1d0e4fbecfb0ed7f02d44",
-    "url": "/DS-visualizer/static/media/cta-illustration.85e2808a.svg"
-  },
-  {
     "revision": "f5bcc1ccea322991b4b9b43b3f3ecefc",
     "url": "/DS-visualizer/static/media/pricing-illustration.f5bcc1cc.svg"
+  },
+  {
+    "revision": "85e2808ae2a1d0e4fbecfb0ed7f02d44",
+    "url": "/DS-visualizer/static/media/cta-illustration.85e2808a.svg"
   },
   {
     "revision": "968b72c04759f001df5d92cbdf6bd35b",
