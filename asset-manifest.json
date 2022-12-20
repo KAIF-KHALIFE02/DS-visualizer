@@ -10,7 +10,7 @@
   "runtime~main.js": "/DS-visualizer/static/js/runtime~main.1018aa21.js",
   "runtime~main.js.map": "/DS-visualizer/static/js/runtime~main.1018aa21.js.map",
   "static/media/BiDijkstraWorking.mp4": "/DS-visualizer/static/media/BiDijkstraWorking.c7aac047.mp4",
-  "static/media/Landing.css": "/DS-visualizer/static/media/cta-illustration.85e2808a.svg",
+  "static/media/Landing.css": "/DS-visualizer/static/media/pricing-illustration.f5bcc1cc.svg",
   "static/media/bb-sortslide1.png": "/DS-visualizer/static/media/bb-sortslide1.968b72c0.png",
   "static/media/bb-sort-1inall.png": "/DS-visualizer/static/media/bb-sort-1inall.c09dd65b.png",
   "static/media/insert-sort-0.png": "/DS-visualizer/static/media/insert-sort-0.3a8682c8.png",
@@ -61,6 +61,6 @@
   "static/css/main.079cbbe0.chunk.css.map": "/DS-visualizer/static/css/main.079cbbe0.chunk.css.map",
   "static/css/2.c8d034ac.chunk.css.map": "/DS-visualizer/static/css/2.c8d034ac.chunk.css.map",
   "index.html": "/DS-visualizer/index.html",
-  "precache-manifest.0a1bad10dae5b3ead52bd7acc0a8a7d6.js": "/DS-visualizer/precache-manifest.0a1bad10dae5b3ead52bd7acc0a8a7d6.js",
+  "precache-manifest.36fae2345c1b8e129aadc53a23ef3474.js": "/DS-visualizer/precache-manifest.36fae2345c1b8e129aadc53a23ef3474.js",
   "service-worker.js": "/DS-visualizer/service-worker.js"
 }

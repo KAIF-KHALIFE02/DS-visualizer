@@ -36,12 +36,12 @@ self.__precacheManifest = [
     "url": "/DS-visualizer/static/media/hero-top-illustration.aa0f14cb.svg"
   },
   {
-    "revision": "f5bcc1ccea322991b4b9b43b3f3ecefc",
-    "url": "/DS-visualizer/static/media/pricing-illustration.f5bcc1cc.svg"
-  },
-  {
     "revision": "85e2808ae2a1d0e4fbecfb0ed7f02d44",
     "url": "/DS-visualizer/static/media/cta-illustration.85e2808a.svg"
+  },
+  {
+    "revision": "f5bcc1ccea322991b4b9b43b3f3ecefc",
+    "url": "/DS-visualizer/static/media/pricing-illustration.f5bcc1cc.svg"
   },
   {
     "revision": "968b72c04759f001df5d92cbdf6bd35b",
@@ -236,7 +236,7 @@ self.__precacheManifest = [
     "url": "/DS-visualizer/static/media/Astar2.4981c4f3.png"
   },
   {
-    "revision": "76c3e3222ac2f20694200ea2519e0cf5",
+    "revision": "6275c1d23914185fa2ef4c3f90fdfcb9",
     "url": "/DS-visualizer/index.html"
   }
 ];
